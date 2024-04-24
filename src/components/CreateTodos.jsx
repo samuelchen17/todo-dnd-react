@@ -8,11 +8,11 @@ import "react-toastify/dist/ReactToastify.css";
 // toast notify message
 const notifySuccess = ({ message }) => {
   toast.success(message, {
-    position: "top-center",
-    autoClose: 5000,
+    position: "top-right",
+    autoClose: 4000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
     theme: "dark",
@@ -22,11 +22,11 @@ const notifySuccess = ({ message }) => {
 
 const notifyError = ({ message }) => {
   toast.error(message, {
-    position: "top-center",
-    autoClose: 5000,
+    position: "top-right",
+    autoClose: 4000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
     theme: "dark",
@@ -87,17 +87,17 @@ export default function CreateTodos({ todos, setTodos }) {
         Create
       </button>
       <ToastContainer
-        theme="dark"
-        position="top-center"
-        autoClose={5000}
+        position="top-right"
+        autoClose={4000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
+        pauseOnFocusLoss={false}
         draggable
-        pauseOnHover
-        transition={Bounce} // Use transition prop here
+        pauseOnHover={false}
+        theme="dark"
+        transition:Bounce
       />
     </form>
   );

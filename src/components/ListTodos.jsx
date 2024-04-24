@@ -8,9 +8,9 @@ export default function ListTodos({ todos, setTodos }) {
 
   useEffect(() => {
     // f = filter
-    const fIncomplete = todos.filter((todo) => todo.status === incomplete);
-    const fInProgress = todos.filter((todo) => todo.status === inProgress);
-    const fCompleted = todos.filter((todo) => todo.status === completed);
+    const fIncomplete = todos.filter((todo) => todo.status === "incomplete");
+    const fInProgress = todos.filter((todo) => todo.status === "inProgress");
+    const fCompleted = todos.filter((todo) => todo.status === "completed");
 
     setIncomplete(fIncomplete);
     setInProgress(fInProgress);
@@ -21,6 +21,7 @@ export default function ListTodos({ todos, setTodos }) {
 
   return (
     <div className="flex gap-16 ">
+      {/* Goes through statuses and creates a Section for each */}
       {statuses.map((status, index) => (
         <Section
           key={index}
