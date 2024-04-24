@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Section from "./Section";
 
 export default function ListTodos({ todos, setTodos }) {
   const [incomplete, setIncomplete] = useState([]);
@@ -16,9 +17,21 @@ export default function ListTodos({ todos, setTodos }) {
     setCompleted(fCompleted);
   }, [todos]);
 
+  const statuses = ["incomplete", "inProgress", "completed"];
+
   return (
-    <>
-      <p>List</p>
-    </>
+    <div className="flex gap-16 ">
+      {statuses.map((status, index) => (
+        <Section
+          key={index}
+          status={status}
+          todos={todos}
+          setTodos={setTodos}
+          incomplete={incomplete}
+          inProgress={inProgress}
+          completed={completed}
+        />
+      ))}
+    </div>
   );
 }

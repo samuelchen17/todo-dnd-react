@@ -70,7 +70,7 @@ export default function CreateTodos({ todos, setTodos }) {
     setTodo({
       id: "",
       name: "",
-      status: "todo",
+      status: "incomplete",
     });
   };
   return (
