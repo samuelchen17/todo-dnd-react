@@ -1,8 +1,12 @@
 export default function Task({ todo, todos, setTodos }) {
-  const handleDelete = (id) => {
-    // console.log(id);
-    // const fTodos = todos.filter
-  };
+  // Create a new array where the id in question is removed
+  function handleDelete(id) {
+    // receive todo at a time and return that todo.id that does not equal to id
+    // all tasks that are does not have the same id will be stored in filteredTodos
+    const filteredTodos = todos.filter((t) => t.id !== id);
+
+    setTodos(filteredTodos);
+  }
   return (
     <div
       className={`relative p-4 mt-8 shadow-md rounded-md cursor-grab bg-white`}
