@@ -1,40 +1,12 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-// toast
-import { ToastContainer, toast, Bounce } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-// toast notify message
-const notifySuccess = ({ message }) => {
-  toast.success(message, {
-    position: "top-right",
-    autoClose: 4000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-    transition: Bounce,
-  });
-};
-
-const notifyError = ({ message }) => {
-  toast.error(message, {
-    position: "top-right",
-    autoClose: 4000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-    transition: Bounce,
-  });
-};
-
-export default function CreateTodos({ todos, setTodos }) {
+export default function CreateTodos({
+  todos,
+  setTodos,
+  notifySuccess,
+  notifyError,
+}) {
   const [todo, setTodo] = useState({
     id: "",
     name: "",
@@ -86,19 +58,6 @@ export default function CreateTodos({ todos, setTodos }) {
       <button className="bg-cyan-500 rounded-md px-4 h-12 text-white">
         Create
       </button>
-      <ToastContainer
-        position="top-right"
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable
-        pauseOnHover={false}
-        theme="dark"
-        transition:Bounce
-      />
     </form>
   );
 }

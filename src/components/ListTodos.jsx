@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Section from "./Section";
 
-export default function ListTodos({ todos, setTodos }) {
+export default function ListTodos({ todos, setTodos, notifyError }) {
   const [incomplete, setIncomplete] = useState([]);
   const [inProgress, setInProgress] = useState([]);
   const [completed, setCompleted] = useState([]);
@@ -31,6 +31,7 @@ export default function ListTodos({ todos, setTodos }) {
           incomplete={incomplete}
           inProgress={inProgress}
           completed={completed}
+          notifyError={notifyError}
         />
       ))}
     </div>

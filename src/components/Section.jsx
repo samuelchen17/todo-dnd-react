@@ -8,6 +8,7 @@ export default function Section({
   incomplete,
   inProgress,
   completed,
+  notifyError,
 }) {
   let text;
   let bg;
@@ -32,7 +33,13 @@ export default function Section({
       <Header text={text} background={bg} count={tasksToMap.length}></Header>
       {tasksToMap.length > 0 &&
         tasksToMap.map((todo) => (
-          <Task key={todo.id} todo={todo} todos={todos} setTodos={setTodos} />
+          <Task
+            key={todo.id}
+            todo={todo}
+            todos={todos}
+            setTodos={setTodos}
+            notifyError={notifyError}
+          />
         ))}
     </div>
   );

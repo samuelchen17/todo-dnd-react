@@ -1,11 +1,15 @@
-export default function Task({ todo, todos, setTodos }) {
+export default function Task({ todo, todos, setTodos, notifyError }) {
   // Create a new array where the id in question is removed
   function handleDelete(id) {
     // receive todo at a time and return that todo.id that does not equal to id
     // all tasks that are does not have the same id will be stored in filteredTodos
     const filteredTodos = todos.filter((t) => t.id !== id);
 
+    // Update local storage
+    localStorage.setItem("todos", JSON.stringify(filteredTodos));
+
     setTodos(filteredTodos);
+    notifyError({ message: "Todo Deleted" });
   }
   return (
     <div
