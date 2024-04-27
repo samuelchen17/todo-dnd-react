@@ -6,6 +6,10 @@ import ListTodos from "./components/ListTodos";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// react drag and drop
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 // toast notify message
 const notifySuccess = ({ message }) => {
   toast.success(message, {
@@ -47,8 +51,8 @@ function App() {
   console.log("todo", todos);
 
   return (
-    <>
-      <div className="bg-blue-300 w-screen h-screen flex flex-col items-center gap-16 pt-32">
+    <DndProvider backend={HTML5Backend}>
+      <div className="bg-blue-300 w-screen h-screen flex flex-col items-center gap-16 p-3 pt-32">
         <CreateTodos
           todos={todos}
           setTodos={setTodos}
@@ -78,7 +82,7 @@ function App() {
         theme="dark"
         transition:Bounce
       />
-    </>
+    </DndProvider>
   );
 }
 

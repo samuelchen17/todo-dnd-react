@@ -1,3 +1,5 @@
+// This component is the header for the status of each task and the number of tasks contained within
+
 export default function Header({ text, background, count }) {
   return (
     <div

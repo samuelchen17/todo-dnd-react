@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Task from "./Task";
+import { useDrop } from "react-dnd";
 
 export default function Section({
   status,
@@ -10,6 +11,28 @@ export default function Section({
   completed,
   notifyError,
 }) {
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: "todo",
+    drop: (item) => addItemToSection(item.id),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+
+  const addItemToSection = (id) => {
+    // console.log("dropped", id, status);
+    setTodos((prev) => {
+      //   console.log("prev", prev);
+      const modifiedTodos = prev.map((t) => {
+        if (t.id === id) {
+          return { ...t, status: status };
+        }
+        return t;
+      });
+      return prev;
+    });
+  };
+
   let text;
   let bg;
   let tasksToMap;
@@ -29,7 +52,10 @@ export default function Section({
   }
 
   return (
-    <div className={`w-64 `}>
+    <div
+      ref={drop}
+      className={`w-64 rounded-md p-2 ${isOver ? "bg-blue-400" : ""}`}
+    >
       <Header text={text} background={bg} count={tasksToMap.length}></Header>
       {tasksToMap.length > 0 &&
         tasksToMap.map((todo) => (

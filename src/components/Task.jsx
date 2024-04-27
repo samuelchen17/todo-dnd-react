@@ -1,10 +1,23 @@
+// This component is the individual boxes containing the todo
+
+import { useDrag } from "react-dnd";
+
 export default function Task({ todo, todos, setTodos, notifyError }) {
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: "todo",
+    item: { id: todo.id },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  }));
+
+  //   console.log(isDragging);
+
   // Create a new array where the id in question is removed
   function handleDelete(id) {
     // receive todo at a time and return that todo.id that does not equal to id
     // all tasks that are does not have the same id will be stored in filteredTodos
     const filteredTodos = todos.filter((t) => t.id !== id);
-
     // Update local storage
     localStorage.setItem("todos", JSON.stringify(filteredTodos));
 
@@ -13,13 +26,17 @@ export default function Task({ todo, todos, setTodos, notifyError }) {
   }
   return (
     <div
-      className={`relative p-4 mt-8 shadow-md rounded-md cursor-grab bg-white`}
+      ref={drag}
+      className={`relative p-4 mt-8 shadow-md rounded-md cursor-grab bg-white ${
+        isDragging ? "opacity-50" : "opacity-100"
+      }`}
     >
       <p>{todo.name}</p>
       <button
         className={`absolute bottom-1 right-1 text-black`}
         onClick={() => handleDelete(todo.id)}
       >
+        {/* icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
