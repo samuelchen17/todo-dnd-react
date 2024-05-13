@@ -29,7 +29,10 @@ export default function Section({
         }
         return t;
       });
-      return prev;
+
+      localStorage.setItem("todos", JSON.stringify(modifiedTodos));
+
+      return modifiedTodos;
     });
   };
 
