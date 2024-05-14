@@ -1,8 +1,15 @@
-# React + Vite
+# React Drag and Drop To-do App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was created using React and Tailwind CSS. It allows the user to create tasks which can then be dragged and dropped to indicate status of the task.
 
-Currently, two official plugins are available:
+To run the App, please download the repository and enter the following commands into terminal.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+npm install
+```
+
+followed by
+
+```
+npm run dev
+```
